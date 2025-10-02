@@ -1,4 +1,4 @@
-package com.sazcode.coroutinas.presentation
+package com.sazcode.coroutinas.presentation.mapper
 
 import com.sazcode.coroutinas.domain.DragonBallCharacter
 import com.sazcode.coroutinas.presentation.model.DragonBallCharacterUI

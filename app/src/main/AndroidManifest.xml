@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Coroutinas"
         android:name=".CoroutinesApplication">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Coroutinas">

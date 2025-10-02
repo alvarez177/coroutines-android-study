@@ -1,4 +1,4 @@
-package com.sazcode.coroutinas
+package com.sazcode.coroutinas.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
-import com.sazcode.coroutinas.presentation.DragonBallCharactersViewModel
+import com.sazcode.coroutinas.presentation.viewmodel.DragonBallCharactersViewModel
 import com.sazcode.coroutinas.ui.theme.CoroutinasTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

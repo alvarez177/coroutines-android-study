@@ -1,4 +1,4 @@
-package com.sazcode.coroutinas.presentation
+package com.sazcode.coroutinas.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 open class BaseViewModel<State: Reducer.ViewState, Event: Reducer.ViewEvent, Effect: Reducer.ViewEffect>(
     val initialState: State,
-    private val reducer: Reducer<State,Event, Effect>
+    private val reducer: Reducer<State, Event, Effect>
 ) : ViewModel() {
     private val _state: MutableStateFlow<State> = MutableStateFlow(initialState)
 
@@ -31,7 +31,7 @@ open class BaseViewModel<State: Reducer.ViewState, Event: Reducer.ViewEvent, Eff
             }
         }.stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000L),
+            started = SharingStarted.Companion.WhileSubscribed(5000L),
             initialValue = initialState
         )
     }
@@ -40,7 +40,7 @@ open class BaseViewModel<State: Reducer.ViewState, Event: Reducer.ViewEvent, Eff
     val event: SharedFlow<Event>
         get() = _event.asSharedFlow()
 
-    private val _effects = Channel<Effect>(capacity = Channel.CONFLATED)
+    private val _effects = Channel<Effect>(capacity = Channel.Factory.CONFLATED)
     val effect = _effects.receiveAsFlow()
 
     val timeCapsule: TimeCapsule<State> = TimeTravelCapsule { storedState ->

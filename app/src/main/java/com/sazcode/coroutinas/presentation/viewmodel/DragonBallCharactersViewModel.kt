@@ -1,8 +1,9 @@
-package com.sazcode.coroutinas.presentation
+package com.sazcode.coroutinas.presentation.viewmodel
 
 import com.sazcode.coroutinas.domain.DragonBallCharacter
 import com.sazcode.coroutinas.domain.GetDragonBallCharactersUseCase
 import com.sazcode.coroutinas.domain.Result
+import com.sazcode.coroutinas.presentation.mapper.DragonBallCharacterToDragonBallCharacterUIMapper
 import com.sazcode.coroutinas.presentation.state.MainScreenEffect
 import com.sazcode.coroutinas.presentation.state.MainScreenEvent
 import com.sazcode.coroutinas.presentation.state.MainScreenReducer
