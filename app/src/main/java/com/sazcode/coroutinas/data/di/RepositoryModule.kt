@@ -13,7 +13,6 @@ import jakarta.inject.Singleton
 abstract class RepositoryModule {
 
     @Binds
-    @Singleton
     abstract fun bindAnimeRepository(
         impl: AnimeDataRepository
     ): AnimeRepository

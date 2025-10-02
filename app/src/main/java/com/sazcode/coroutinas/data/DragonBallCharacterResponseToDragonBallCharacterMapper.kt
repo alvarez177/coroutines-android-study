@@ -9,15 +9,15 @@ class DragonBallCharacterResponseToDragonBallCharacterMapper @Inject constructor
 
     override fun transform(type1: DragonBallCharacterResponse): DragonBallCharacter {
         return DragonBallCharacter(
-            id = type1.id,
-            name = type1.name,
-            ki = type1.ki,
-            race = type1.race,
-            maxKi = type1.maxKi,
-            gender = type1.gender,
-            description =  type1.description,
-            image = type1.image,
-            affiliation = type1.affiliation
+            id = type1.id.orEmpty(),
+            name = type1.name.orEmpty(),
+            ki = type1.ki.orEmpty(),
+            race = type1.race.orEmpty(),
+            maxKi = type1.maxKi.orEmpty(),
+            gender = type1.gender.orEmpty(),
+            description =  type1.description.orEmpty(),
+            image = type1.image.orEmpty(),
+            affiliation = type1.affiliation.orEmpty()
         )
     }
 }

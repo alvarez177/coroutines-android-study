@@ -12,9 +12,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.lifecycleScope
 import com.sazcode.coroutinas.presentation.DragonBallCharactersViewModel
 import com.sazcode.coroutinas.ui.theme.CoroutinasTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -22,6 +24,9 @@ class MainActivity : ComponentActivity() {
     val viewModel: DragonBallCharactersViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycleScope.launch {
+            viewModel.initialDataLoad()
+        }
         enableEdgeToEdge()
         setContent {
             CoroutinasTheme {

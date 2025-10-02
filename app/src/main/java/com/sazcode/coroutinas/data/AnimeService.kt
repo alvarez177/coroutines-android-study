@@ -5,5 +5,5 @@ import retrofit2.http.GET
 interface AnimeService {
 
     @GET("characters")
-    suspend fun getDragonBallCharacters(): List<DragonBallCharacterResponse>
+    suspend fun getDragonBallResponse(): DragonBallResponse
 }
