@@ -4,5 +4,6 @@ import com.sazcode.coroutinas.presentation.model.DragonBallCharacterUI
 
 data class MainScreenState(
     val isDragonBallSectionLoading: Boolean = true,
-    val dragonBallCharacters: List<DragonBallCharacterUI> = emptyList()
+    val dragonBallCharacters: List<DragonBallCharacterUI> = emptyList(),
+    val error: String = ""
 ) : Reducer.ViewState

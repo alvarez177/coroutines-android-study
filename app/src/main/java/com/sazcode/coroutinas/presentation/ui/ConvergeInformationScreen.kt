@@ -1,6 +1,5 @@
 package com.sazcode.coroutinas.presentation.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,7 +15,10 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -59,6 +61,8 @@ fun CoverageInformationScreen(
 fun SectionContainer(uiState: MainScreenState) {
     if (uiState.isDragonBallSectionLoading) {
         LoadingOverlay()
+    } else if (uiState.error.isNotBlank()) {
+        ErrorOverlay(message = uiState.error)
     } else {
         LazyVerticalGrid(
             columns = GridCells.Fixed(3),
@@ -132,5 +136,32 @@ fun LoadingOverlay() {
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(color = Color.White)
+    }
+}
+
+@Composable
+fun ErrorOverlay(message: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.3f)),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.Default.ErrorOutline,
+                contentDescription = null,
+                tint = Color.White,
+                modifier = Modifier.size(48.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = message,
+                color = Color.White,
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
     }
 }

@@ -31,6 +31,7 @@ class DragonBallCharactersViewModel @Inject constructor(
             }
             is Result.Error -> {
                 sendEvent(MainScreenEvent.UpdateDragonBallSectionLoading(isLoading = false))
+                sendEvent(MainScreenEvent.ShowError(result.error))
                 // sendEffect(MainScreenEffect.ShowError(dragonBallCharacters.error))
             }
         }
