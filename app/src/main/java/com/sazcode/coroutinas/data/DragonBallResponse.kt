@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 
 data class DragonBallResponse(
-    @SerialName("items")
+    @SerializedName("items")
     val dragonBallCharactersResponse: List<DragonBallCharacterResponse>?,
-    @SerialName("meta")
+    @SerializedName("meta")
     val metaResponse: DragonBallMetaResponse?
 )

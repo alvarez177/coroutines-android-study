@@ -1,5 +1,6 @@
-package com.sazcode.coroutinas.data
+package com.sazcode.coroutinas.data.mapper
 
+import com.sazcode.coroutinas.data.DragonBallCharacterResponse
 import com.sazcode.coroutinas.domain.DragonBallCharacter
 import com.sazcode.coroutinas.shared.Transform
 import jakarta.inject.Inject
@@ -15,7 +16,7 @@ class DragonBallCharacterResponseToDragonBallCharacterMapper @Inject constructor
             race = type1.race.orEmpty(),
             maxKi = type1.maxKi.orEmpty(),
             gender = type1.gender.orEmpty(),
-            description =  type1.description.orEmpty(),
+            description = type1.description.orEmpty(),
             image = type1.image.orEmpty(),
             affiliation = type1.affiliation.orEmpty()
         )

@@ -18,6 +18,12 @@ class MainScreenReducer : Reducer<MainScreenState, MainScreenEvent, MainScreenEf
                     isDragonBallSectionLoading = event.isLoading
                 ) to null
             }
+
+            is MainScreenEvent.ShowError -> {
+                previousState.copy(
+                    error = event.error
+                ) to null
+            }
         }
     }
 }
