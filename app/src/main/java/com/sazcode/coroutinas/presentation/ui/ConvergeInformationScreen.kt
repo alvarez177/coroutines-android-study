@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
@@ -84,7 +85,7 @@ fun SectionItem(item: DragonBallCharacterUI) {
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.LightGray, RoundedCornerShape(8.dp))
-            .padding(8.dp) ,
+            .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AsyncImage(
@@ -164,4 +165,66 @@ fun ErrorOverlay(message: String) {
             )
         }
     }
+}
+
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun Preview_MainCoverageInformation_Success() {
+    val fakeState = MainScreenState(
+        isDragonBallSectionLoading = false,
+        dragonBallCharacters = listOf(
+            DragonBallCharacterUI(
+                id = "1",
+                name = "Goku",
+                race = "Saiyan",
+                image = "https://static.wikia.nocookie.net/dragonball/images/0/0d/Goku_Dragon_Ball_Super_Broly.png"
+            ),
+            DragonBallCharacterUI(
+                id = "2",
+                name = "Vegeta",
+                race = "Saiyan",
+                image = "https://static.wikia.nocookie.net/dragonball/images/3/30/Vegeta_DBZ_Episode_287.png"
+            ),
+            DragonBallCharacterUI(
+                id = "3",
+                name = "Piccolo",
+                race = "Namekian",
+                image = "https://static.wikia.nocookie.net/dragonball/images/5/5f/Piccolo_Dragon_Ball_Super_Broly.png"
+            ),
+            DragonBallCharacterUI(
+                id = "4",
+                name = "Test 1",
+                race = "Namekian",
+                image = "https://static.wikia.nocookie.net/dragonball/images/5/5f/Piccolo_Dragon_Ball_Super_Broly.png"
+            )
+        ),
+        error = ""
+    )
+
+    CoverageInformationScreen(uiState = fakeState)
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun Preview_MainCoverageInformation_Loading() {
+    val fakeState = MainScreenState(
+        isDragonBallSectionLoading = true,
+        dragonBallCharacters = emptyList(),
+        error = ""
+    )
+
+    CoverageInformationScreen(uiState = fakeState)
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun Preview_MainCoverageInformation_Error() {
+    val fakeState = MainScreenState(
+        isDragonBallSectionLoading = false,
+        dragonBallCharacters = emptyList(),
+        error = "No pudimos cargar los personajes. Intenta más tarde."
+    )
+
+    CoverageInformationScreen(uiState = fakeState)
 }
