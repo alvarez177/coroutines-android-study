@@ -1,4 +1,4 @@
-package com.sazcode.coroutinas.data
+package com.sazcode.coroutinas.data.response.dragonballz
 
 data class DragonBallCharacterResponse(
     val id: String?,

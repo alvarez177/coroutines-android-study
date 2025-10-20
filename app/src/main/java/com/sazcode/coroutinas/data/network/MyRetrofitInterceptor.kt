@@ -1,4 +1,4 @@
-package com.sazcode.coroutinas.data
+package com.sazcode.coroutinas.data.network
 
 import android.util.Log
 import jakarta.inject.Inject

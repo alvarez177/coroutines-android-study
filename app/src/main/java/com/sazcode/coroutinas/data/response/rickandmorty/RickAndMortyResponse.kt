@@ -1,4 +1,4 @@
-package com.sazcode.coroutinas.data
+package com.sazcode.coroutinas.data.response.rickandmorty
 
 import com.google.gson.annotations.SerializedName
 
