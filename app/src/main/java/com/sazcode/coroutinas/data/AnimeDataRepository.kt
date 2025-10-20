@@ -3,7 +3,7 @@ package com.sazcode.coroutinas.data
 import com.sazcode.coroutinas.data.mapper.DragonBallCharacterResponseToDragonBallCharacterMapper
 import com.sazcode.coroutinas.data.mapper.RickAndMortyCharacterResponseToRickAndMortyCharacter
 import com.sazcode.coroutinas.domain.AnimeRepository
-import com.sazcode.coroutinas.domain.DragonBallCharacter
+import com.sazcode.coroutinas.domain.model.DragonBallCharacter
 import com.sazcode.coroutinas.domain.Result
 import com.sazcode.coroutinas.domain.model.RickAndMortyCharacter
 import javax.inject.Inject

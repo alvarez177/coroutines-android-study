@@ -31,16 +31,18 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.sazcode.coroutinas.presentation.model.ComeFromType
 import com.sazcode.coroutinas.presentation.model.MixedContentUI
 import com.sazcode.coroutinas.presentation.model.SectionUI
-import com.sazcode.coroutinas.presentation.viewmodel.DragonBallCharactersViewModel
+import com.sazcode.coroutinas.presentation.viewmodel.MixedContentScreenViewModel
 
 @Composable
 fun MixedContentScreenRoute(
-    viewModel: DragonBallCharactersViewModel = hiltViewModel()
+    viewModel: MixedContentScreenViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.state.collectAsState()
 
@@ -163,77 +165,77 @@ fun SectionItemCard(item: MixedContentUI) {
     }
 }
 
-
-/*@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun MixedContentSectionPreview() {
-    Column {
-        MixedContentSection(
-            sectionTitle = "Dragon ball z",
-            sectionItems = listOf(
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                ),
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                ),
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                ),
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                )
-            )
+fun TitleAndValue(
+    title: String,
+    subTitle: String
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(top = 4.dp)
         )
-
-        MixedContentSection(
-            sectionTitle = "Rick and Morty",
-            sectionItems = listOf(
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                ),
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                ),
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                ),
-                MixedContentUI(
-                    id = "1",
-                    title = "Goku",
-                    subTitle = "Race",
-                    image = "",
-                    comeFromType = ComeFromType.DRAGON_BALL
-                )
-            )
+        Text(
+            text = subTitle,
+            style = MaterialTheme.typography.bodySmall,
+            color = Color.DarkGray
         )
     }
-} */
+}
+
+
+// SCREEN PREVIEW
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun MixedContentSectionPreview() {
+    val items = listOf(
+        MixedContentUI(
+            id = "1",
+            title = "Goku",
+            subTitle = "Race",
+            image = "",
+            comeFromType = ComeFromType.DRAGON_BALL
+        ),
+        MixedContentUI(
+            id = "1",
+            title = "Goku",
+            subTitle = "Race",
+            image = "",
+            comeFromType = ComeFromType.DRAGON_BALL
+        ),
+        MixedContentUI(
+            id = "1",
+            title = "Goku",
+            subTitle = "Race",
+            image = "",
+            comeFromType = ComeFromType.DRAGON_BALL
+        ),
+        MixedContentUI(
+            id = "1",
+            title = "Goku",
+            subTitle = "Race",
+            image = "",
+            comeFromType = ComeFromType.DRAGON_BALL
+        )
+    )
+    val sectionUI = SectionUI(
+        id = "",
+        isLoading = false,
+        title = "Dragon ball z",
+        items = items,
+        error = null
+    )
+    Column {
+        MixedContentSection(
+            sectionUI
+        )
+
+        MixedContentSection(
+            section = sectionUI
+        )
+    }
+}

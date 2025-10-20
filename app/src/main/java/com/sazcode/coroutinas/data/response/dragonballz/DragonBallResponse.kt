@@ -1,7 +1,6 @@
-package com.sazcode.coroutinas.data
+package com.sazcode.coroutinas.data.response.dragonballz
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.SerialName
 
 data class DragonBallResponse(
     @SerializedName("items")

@@ -1,6 +1,6 @@
 package com.sazcode.coroutinas.data.mapper
 
-import com.sazcode.coroutinas.data.RickAndMortyCharacterResponse
+import com.sazcode.coroutinas.data.response.rickandmorty.RickAndMortyCharacterResponse
 import com.sazcode.coroutinas.domain.model.RickAndMortyCharacter
 import com.sazcode.coroutinas.shared.Transform
 import jakarta.inject.Inject

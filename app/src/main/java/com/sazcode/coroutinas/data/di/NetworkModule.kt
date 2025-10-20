@@ -1,7 +1,7 @@
 package com.sazcode.coroutinas.data.di
 
 import com.sazcode.coroutinas.data.AnimeService
-import com.sazcode.coroutinas.data.MyRetrofitInterceptor
+import com.sazcode.coroutinas.data.network.MyRetrofitInterceptor
 import com.sazcode.coroutinas.data.RickAndMortyService
 import dagger.Module
 import dagger.Provides

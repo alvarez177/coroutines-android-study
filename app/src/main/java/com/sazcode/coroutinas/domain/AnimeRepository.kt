@@ -1,5 +1,6 @@
 package com.sazcode.coroutinas.domain
 
+import com.sazcode.coroutinas.domain.model.DragonBallCharacter
 import com.sazcode.coroutinas.domain.model.RickAndMortyCharacter
 
 interface AnimeRepository {

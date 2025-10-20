@@ -1,5 +1,7 @@
 package com.sazcode.coroutinas.presentation.model
 
+// TODO Maybe I can use this model for screen detail
+
 data class DragonBallCharacterUI (
     val id: String = "",
     val name: String = "",

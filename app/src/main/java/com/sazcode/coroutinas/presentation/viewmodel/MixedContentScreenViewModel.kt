@@ -1,10 +1,8 @@
 package com.sazcode.coroutinas.presentation.viewmodel
 
-import com.sazcode.coroutinas.domain.DragonBallCharacter
-import com.sazcode.coroutinas.domain.GetDragonBallCharactersUseCase
-import com.sazcode.coroutinas.domain.GetRickAndMortyCharactersUseCase
+import com.sazcode.coroutinas.domain.usecase.GetDragonBallCharactersUseCase
+import com.sazcode.coroutinas.domain.usecase.GetRickAndMortyCharactersUseCase
 import com.sazcode.coroutinas.domain.Result
-import com.sazcode.coroutinas.domain.model.RickAndMortyCharacter
 import com.sazcode.coroutinas.presentation.mapper.DragonBallCharacterToDragonBallCharacterUIMapper
 import com.sazcode.coroutinas.presentation.mapper.RickAndMortyCharacterToRickAndMortyCharacterUIMapper
 import com.sazcode.coroutinas.presentation.model.MixedContentUI
@@ -18,11 +16,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class DragonBallCharactersViewModel @Inject constructor(
+class MixedContentScreenViewModel @Inject constructor(
     private val getDragonBallCharactersUseCase: GetDragonBallCharactersUseCase,
     private val characterDomainToUIMapper: DragonBallCharacterToDragonBallCharacterUIMapper,
     private val getRickAndMortyCharactersUseCase: GetRickAndMortyCharactersUseCase,
@@ -31,7 +31,6 @@ class DragonBallCharactersViewModel @Inject constructor(
     initialState = MainScreenState(),
     reducer = MainScreenReducer()
 ) {
-
     override suspend fun initialDataLoad() {
         coroutineScope {
             val dragonBallJob = async {

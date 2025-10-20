@@ -1,4 +1,4 @@
-package com.sazcode.coroutinas.domain
+package com.sazcode.coroutinas.domain.model
 
 data class DragonBallCharacter(
     val id: String,

@@ -1,7 +1,7 @@
 package com.sazcode.coroutinas.data.mapper
 
-import com.sazcode.coroutinas.data.DragonBallCharacterResponse
-import com.sazcode.coroutinas.domain.DragonBallCharacter
+import com.sazcode.coroutinas.data.response.dragonballz.DragonBallCharacterResponse
+import com.sazcode.coroutinas.domain.model.DragonBallCharacter
 import com.sazcode.coroutinas.shared.Transform
 import jakarta.inject.Inject
 
