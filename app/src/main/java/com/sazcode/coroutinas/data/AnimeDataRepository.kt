@@ -1,5 +1,6 @@
 package com.sazcode.coroutinas.data
 
+import com.google.firebase.firestore.FirebaseFirestore
 import com.sazcode.coroutinas.data.localsource.DragonBallCharacterDao
 import com.sazcode.coroutinas.data.localsource.DragonBallCharacterEntity
 import com.sazcode.coroutinas.data.localsource.RickAndMortyCharacterDao
@@ -20,7 +21,8 @@ class AnimeDataRepository @Inject constructor(
     private val rickAndMortyService: RickAndMortyService,
     private val toRickAndMortyCharacterMapper: RickAndMortyCharacterResponseToRickAndMortyCharacter,
     private val dragonBallCharacterDao: DragonBallCharacterDao,
-    private val rickAndMortyCharacterDao: RickAndMortyCharacterDao
+    private val rickAndMortyCharacterDao: RickAndMortyCharacterDao,
+    private val firestore: FirebaseFirestore
 ) : AnimeRepository {
 
     override suspend fun getDragonBallCharacters(): Result<List<DragonBallCharacter>> {
@@ -44,6 +46,13 @@ class AnimeDataRepository @Inject constructor(
 
             val entities = domainCharacters.map { DragonBallCharacterEntity(it) }
             dragonBallCharacterDao.saveAll(entities)
+
+            domainCharacters.forEach { character ->
+                firestore.collection("dragonballcharacters")
+                    .document(character.id)
+                    .set(character)
+            }
+
 
             Result.Success(domainCharacters)
 
@@ -69,6 +78,11 @@ class AnimeDataRepository @Inject constructor(
             val rickAndMortyCharactersEntity =
                 rickAndMortyCharacters.map { RickAndMortyCharacterEntity(it) }
             rickAndMortyCharacterDao.saveAll(rickAndMortyCharactersEntity)
+            rickAndMortyCharacters.forEach { character ->
+                firestore.collection("rickandmortycharacters")
+                    .document(character.id)
+                    .set(character)
+            }
              Result.Success(rickAndMortyCharacters)
         } catch (exception: Exception) {
             return Result.Error(exception.message.orEmpty())
