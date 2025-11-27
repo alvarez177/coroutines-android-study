@@ -6,6 +6,7 @@ import com.sazcode.coroutinas.presentation.state.Reducer
 import com.sazcode.coroutinas.shared.TimeCapsule
 import com.sazcode.coroutinas.shared.TimeTravelCapsule
 import com.squareup.picasso.BuildConfig
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,8 +18,9 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-open class BaseViewModel<State: Reducer.ViewState, Event: Reducer.ViewEvent, Effect: Reducer.ViewEffect>(
+open class BaseViewModel<State : Reducer.ViewState, Event : Reducer.ViewEvent, Effect : Reducer.ViewEffect>(
     val initialState: State,
     private val reducer: Reducer<State, Event, Effect>
 ) : ViewModel() {
@@ -27,7 +29,9 @@ open class BaseViewModel<State: Reducer.ViewState, Event: Reducer.ViewEvent, Eff
     val state: StateFlow<State> by lazy {
         _state.onStart {
             viewModelScope.launch {
-                initialDataLoad()
+                withContext(Dispatchers.IO) {
+                    initialDataLoad()
+                }
             }
         }.stateIn(
             scope = viewModelScope,
